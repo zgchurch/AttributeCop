@@ -1,13 +1,36 @@
 AttributeCop
 ============
 
-Introduction goes here.
+Know those little red stars that appear next to required fields in a form? AttributeCop can automatically add them for you. Just install to vendor/plugins.
 
 
 Example
 =======
 
-Example goes here.
+Model
+-----
+    class Person < ActiveRecord::Base
+      validates_presence_of :name
+    end
+
+View
+----
+    <%= form_for @person do |f| %>
+      <%= f.label :name %>
+    <% end %>
+
+HTML (from the view)
+--------------------
+    ...
+    <label for="person_name" class="required">Name</label>
+    ...
+
+CSS
+---
+    label.required:after {
+      color: red;
+      content: " *";
+    }
 
 
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+Copyright (c) 2011 Zach Church, released under the MIT license
